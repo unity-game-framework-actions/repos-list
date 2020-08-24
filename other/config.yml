@@ -1,0 +1,23 @@
+body: |
+  # Repositories
+
+  {groupsFormatted}
+
+group: |
+  ## {group.name}
+
+  {repositoriesFormatted}
+
+repository: |
+  - [{repository.description}](repository.html_url) {repositoryLabelFormatted}
+
+repositoryLabel: |
+  `{repository.label}`
+
+groups:
+- name: Main
+  topics: main,main2
+- name: Preview
+  topics: preview
+- name: Tests
+  topics: tests
