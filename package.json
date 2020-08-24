@@ -1,0 +1,38 @@
+{
+  "name": "draft",
+  "version": "0.0.0",
+  "displayName": "Draft",
+  "description": "No description.",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "npm run format && npm run tsc && npm run pack",
+    "tsc": "tsc",
+    "format": "prettier --write **/*.ts",
+    "pack": "ncc build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unity-game-framework-actions/draft.git"
+  },
+  "author": "Unity Game Framework",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unity-game-framework-actions/draft/issues"
+  },
+  "homepage": "https://github.com/unity-game-framework-actions/draft#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^4.0.0",
+    "@types/js-yaml": "^3.12.5",
+    "@types/object-path": "^0.11.0",
+    "eol": "^0.9.1",
+    "indent-string": "^4.0.0",
+    "js-yaml": "^3.14.0",
+    "object-path": "^0.11.4"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.7"
+  }
+}

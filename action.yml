@@ -1,0 +1,34 @@
+name: 'Draft'
+description: 'No description.'
+inputs:
+  token:
+    description: 'GitHub token used by action.'
+    default: ${{ github.token }}
+    required: true
+  repository:
+    description: 'Owner and repository name. For example, "Codertocat/Hello-World".'
+    default: ${{ github.repository }}
+    required: true
+  config:
+    description: 'Path to file or config as value with generate settings. (Possible representation types: "Json" or "Yaml".)'
+    default: .github/config.yml
+    required: true
+  context:
+    description: 'Context can be specific value or file path, and can be accessed in text formatting context. (Possible representation types: "Json" or "Yaml".)'
+    default: '{}'
+    required: true
+  input:
+    description: 'Input can be specific value or file path. (Possible representation types: "Json" or "Yaml".)'
+    required: true
+  output:
+    description: 'Path to output result as file.'
+    required: false
+outputs:
+  result:
+    description: 'Action result.'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'box'  
+  color: 'gray-dark'
