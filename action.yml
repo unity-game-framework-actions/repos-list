@@ -1,5 +1,5 @@
-name: 'Draft'
-description: 'No description.'
+name: 'Repositories List'
+description: 'Creates repositories list.'
 inputs:
   token:
     description: 'GitHub token used by action.'
