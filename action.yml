@@ -6,7 +6,7 @@ inputs:
     required: true
   visibility:
     description: 'Visibility of repositories to list. (Possible values: "all", "public" or "private".)'
-    visibility: all
+    default: all
     required: true
   token:
     description: 'GitHub token used by action.'
