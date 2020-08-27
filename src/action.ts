@@ -139,6 +139,7 @@ function getGroups(repos: any[], config: any): any[] {
 
       groups.push({
         name: group.name,
+        description: group.description,
         repositories: repositories
       })
     }

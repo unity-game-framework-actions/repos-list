@@ -3877,6 +3877,7 @@ function getGroups(repos, config) {
             repositories.sort((a, b) => a.name.localeCompare(b.name));
             groups.push({
                 name: group.name,
+                description: group.description,
                 repositories: repositories
             });
         }
