@@ -4,6 +4,10 @@ inputs:
   user:
     description: 'User name to get repositories list.'
     required: true
+  visibility:
+    description: 'Visibility of repositories to list. (Possible values: "all", "public" or "private".)'
+    visibility: all
+    required: true
   token:
     description: 'GitHub token used by action.'
     default: ${{ github.token }}

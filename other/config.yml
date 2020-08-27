@@ -9,15 +9,13 @@ group: |
   {repositoriesFormatted}
 
 repository: |
-  - [{repository.description}](repository.html_url) {repositoryLabelFormatted}
+  - [{repository.name}]({repository.html_url}) {repositoryLabelFormatted}  
+    {repository.description}
 
-repositoryLabel: |
-  `{repository.label}`
+repositoryLabel: '`{repositoryLabel}`'
 
 groups:
-- name: Main
-  topics: main,main2
+- name: Stable
+  topics: stable
 - name: Preview
   topics: preview
-- name: Tests
-  topics: tests
