@@ -1,13 +1,16 @@
-name: 'Draft'
-description: 'No description.'
+name: 'Repositories List'
+description: 'Creates repositories list.'
 inputs:
+  user:
+    description: 'User name to get repositories list.'
+    required: true
+  visibility:
+    description: 'Visibility of repositories to list. (Possible values: "all", "public" or "private".)'
+    default: all
+    required: true
   token:
     description: 'GitHub token used by action.'
     default: ${{ github.token }}
-    required: true
-  repository:
-    description: 'Owner and repository name. For example, "Codertocat/Hello-World".'
-    default: ${{ github.repository }}
     required: true
   config:
     description: 'Path to file or config as value with generate settings. (Possible representation types: "Json" or "Yaml".)'
@@ -16,9 +19,6 @@ inputs:
   context:
     description: 'Context can be specific value or file path, and can be accessed in text formatting context. (Possible representation types: "Json" or "Yaml".)'
     default: '{}'
-    required: true
-  input:
-    description: 'Input can be specific value or file path. (Possible representation types: "Json" or "Yaml".)'
     required: true
   output:
     description: 'Path to output result as file.'

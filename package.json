@@ -1,8 +1,8 @@
 {
-  "name": "draft",
+  "name": "repos-list",
   "version": "0.0.0",
-  "displayName": "Draft",
-  "description": "No description.",
+  "displayName": "Repositories List",
+  "description": "Creates repositories list.",
   "main": "lib/main.js",
   "scripts": {
     "build": "npm run format && npm run tsc && npm run pack",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unity-game-framework-actions/draft.git"
+    "url": "git+https://github.com/unity-game-framework-actions/repos-list.git"
   },
   "author": "Unity Game Framework",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/unity-game-framework-actions/draft/issues"
+    "url": "https://github.com/unity-game-framework-actions/repos-list/issues"
   },
-  "homepage": "https://github.com/unity-game-framework-actions/draft#readme",
+  "homepage": "https://github.com/unity-game-framework-actions/repos-list#readme",
   "dependencies": {
     "@actions/core": "^1.2.4",
     "@actions/github": "^4.0.0",
