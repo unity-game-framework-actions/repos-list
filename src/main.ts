@@ -6,7 +6,7 @@ run()
 
 async function run(): Promise<void> {
   try {
-    const user = core.getInput('user', {required: true})
+    const user = getInputUser()
     const visibility = core.getInput('visibility', {required: true})
     const config = await utility.readConfigAny()
     const context = await utility.getContextAny()
@@ -16,4 +16,16 @@ async function run(): Promise<void> {
   } catch (error) {
     core.setFailed(error.message)
   }
+}
+
+function getInputUser(): string {
+  const value = core.getInput('user', {required: true})
+
+  if (value.includes('/')) {
+    const repository = utility.getOwnerAndRepo(value)
+
+    return repository.owner
+  }
+
+  return value
 }

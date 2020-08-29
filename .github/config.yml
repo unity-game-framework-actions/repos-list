@@ -150,7 +150,7 @@ notes:
     labels: Remove
   - name: Fixed
     state: all
-    labels: Bug
+    labels: Fix
   - name: Security
     state: all
     labels: Security
