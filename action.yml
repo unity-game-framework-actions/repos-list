@@ -2,7 +2,8 @@ name: 'Repositories List'
 description: 'Creates repositories list.'
 inputs:
   user:
-    description: 'User name to get repositories list.'
+    description: 'User name or full repository path to get repositories list.'
+    default: ${{ github.repository }}
     required: true
   visibility:
     description: 'Visibility of repositories to list. (Possible values: "all", "public" or "private".)'
