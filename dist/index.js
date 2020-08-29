@@ -5155,7 +5155,7 @@ run();
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const user = core.getInput('user', { required: true });
+            const user = getInputUser();
             const visibility = core.getInput('visibility', { required: true });
             const config = yield utility.readConfigAny();
             const context = yield utility.getContextAny();
@@ -5166,6 +5166,14 @@ function run() {
             core.setFailed(error.message);
         }
     });
+}
+function getInputUser() {
+    const value = core.getInput('user', { required: true });
+    if (value.includes('/')) {
+        const repository = utility.getOwnerAndRepo(value);
+        return repository.owner;
+    }
+    return value;
 }
 
 
