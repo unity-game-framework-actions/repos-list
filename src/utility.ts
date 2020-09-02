@@ -7,6 +7,10 @@ import * as eol from 'eol'
 import indentString from 'indent-string'
 import objectPath from 'object-path'
 
+export function isInteger(value: string): boolean {
+  return /^\d+$/.test(value)
+}
+
 export async function exists(path: string): Promise<boolean> {
   try {
     await fs.access(path, ofs.constants.F_OK)
@@ -299,18 +303,22 @@ export async function getMilestone(owner: string, repo: string, milestoneNumberO
   const octokit = getOctokit()
 
   try {
-    const response = await octokit.request(`GET /repos/${owner}/${repo}/milestones/${milestoneNumberOrTitle}`)
+    if (isInteger(milestoneNumberOrTitle)) {
+      const response = await octokit.request(`GET /repos/${owner}/${repo}/milestones/${milestoneNumberOrTitle}`)
 
-    return response.data
-  } catch {
-    const milestones = await octokit.paginate(`GET /repos/${owner}/${repo}/milestones?state=all`)
+      return response.data
+    } else {
+      const milestones = await octokit.paginate(`GET /repos/${owner}/${repo}/milestones?state=all`)
 
-    for (const milestone of milestones) {
-      if (milestone.title === milestoneNumberOrTitle) {
-        return milestone
+      for (const milestone of milestones) {
+        if (milestone.title === milestoneNumberOrTitle) {
+          return milestone
+        }
       }
-    }
 
+      throw `Milestone not found by the specified title: '${milestoneNumberOrTitle}'.`
+    }
+  } catch {
     throw `Milestone not found by the specified number or title: '${milestoneNumberOrTitle}'.`
   }
 }
@@ -358,17 +366,17 @@ export async function getRelease(owner: string, repo: string, idOrTag: string): 
   const octokit = getOctokit()
 
   try {
-    const response = await octokit.request(`GET /repos/${owner}/${repo}/releases/${idOrTag}`)
+    if (isInteger(idOrTag)) {
+      const response = await octokit.request(`GET /repos/${owner}/${repo}/releases/${idOrTag}`)
 
-    return response.data
-  } catch {
-    try {
+      return response.data
+    } else {
       const response = await octokit.request(`GET /repos/${owner}/${repo}/releases/tags/${idOrTag}`)
 
       return response.data
-    } catch {
-      throw `Release by the specified id or tag name not found: '${idOrTag}'.`
     }
+  } catch {
+    throw `Release by the specified id or tag name not found: '${idOrTag}'.`
   }
 }
 
