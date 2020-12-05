@@ -29,7 +29,7 @@
     "eol": "^0.9.1",
     "indent-string": "^4.0.0",
     "js-yaml": "^3.14.0",
-    "object-path": "^0.11.4"
+    "object-path": "^0.11.5"
   },
   "devDependencies": {
     "prettier": "^2.0.5",
