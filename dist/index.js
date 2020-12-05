@@ -41,7 +41,7 @@ const utility = __importStar(__webpack_require__(2857));
 function createList(user, visibility, config, context) {
     return __awaiter(this, void 0, void 0, function* () {
         const repos = yield getReposList(user, visibility);
-        const groups = getGroups(repos, config);
+        const groups = yield getGroups(repos, config);
         const result = formatBody(groups, config, context);
         return result;
     });
@@ -78,7 +78,8 @@ function formatRepositories(repositories, config, context) {
             context: context,
             repositories: repositories,
             repository: repository,
-            repositoryLabelFormatted: formatRepositoryLabel(repository, config, context)
+            repositoryLabelFormatted: formatRepositoryLabel(repository, config, context),
+            repositoryReleaseFormatted: formatRepositoryRelease(repository, config, context)
         };
         format += utility.formatValues(config.repository, values);
     }
@@ -112,6 +113,18 @@ function formatRepositoryLabel(repository, config, context) {
         return utility.formatValues(config.repositoryLabel, values);
     }
     return '';
+}
+function formatRepositoryRelease(repository, config, context) {
+    let format = '';
+    if (repository.latestRelease != null) {
+        const values = {
+            context: context,
+            repository: repository,
+            release: repository.latestRelease
+        };
+        format = utility.formatValues(config.repositoryRelease, values);
+    }
+    return format;
 }
 function getReposList(user, visibility) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -147,29 +160,34 @@ function getUserType(user) {
     });
 }
 function getGroups(repos, config) {
-    const groups = [];
-    for (const group of config.groups) {
-        const topics = group.topics.split(',');
-        const repositories = getReposByTopics(repos, topics);
-        if (repositories.length > 0) {
-            repositories.sort((a, b) => a.name.localeCompare(b.name));
-            groups.push({
-                name: group.name,
-                description: group.description,
-                repositories: repositories
-            });
+    return __awaiter(this, void 0, void 0, function* () {
+        const groups = [];
+        for (const group of config.groups) {
+            const topics = group.topics.split(',');
+            const repositories = yield getReposByTopics(repos, topics);
+            if (repositories.length > 0) {
+                repositories.sort((a, b) => a.name.localeCompare(b.name));
+                groups.push({
+                    name: group.name,
+                    description: group.description,
+                    repositories: repositories
+                });
+            }
         }
-    }
-    return groups;
+        return groups;
+    });
 }
 function getReposByTopics(repos, topics) {
-    const result = [];
-    for (const repo of repos) {
-        if (hasAnyTopic(repo, topics)) {
-            result.push(repo);
+    return __awaiter(this, void 0, void 0, function* () {
+        const result = [];
+        for (const repo of repos) {
+            if (hasAnyTopic(repo, topics)) {
+                repo['latestRelease'] = yield getLatestRelease(repo);
+                result.push(repo);
+            }
         }
-    }
-    return result;
+        return result;
+    });
 }
 function hasAnyTopic(repo, topics) {
     for (const topic of topics) {
@@ -178,6 +196,17 @@ function hasAnyTopic(repo, topics) {
         }
     }
     return false;
+}
+function getLatestRelease(repo) {
+    return __awaiter(this, void 0, void 0, function* () {
+        var result = null;
+        var releases = yield utility.getReleases(repo.owner.login, repo.name);
+        if (releases.length > 0) {
+            releases.sort((a, b) => b.published_at.localeCompare(a.published_at));
+            result = releases[0];
+        }
+        return result;
+    });
 }
 
 
