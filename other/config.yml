@@ -36,7 +36,7 @@ group: |
 #   repositoryLabelFormatted: Repository label formatted as text.
 #   repositoryReleaseFormatted: Repository release formatted as text.
 repository: |
-  - [{repository.name}]({repository.html_url}) {repositoryReleaseFormatted} {repositoryLabelFormatted}  
+  - [{repository.name}]({repository.html_url}) {repositoryReleaseFormatted}{repositoryLabelFormatted}  
     {repository.description}
 
 # Repository label format.
@@ -54,7 +54,7 @@ repositoryLabel: '`{repositoryLabel}`'
 #   context: Context object passed into action as 'context' parameter.
 #   repository: Repository object.
 #   release: Repository latest release object.
-repositoryRelease: '`{release.name}`'
+repositoryRelease: '`{release.name}`' 
 
 # Setting to group repositories before formatting.
 # Description of group settings.
