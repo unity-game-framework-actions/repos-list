@@ -32,7 +32,7 @@ jobs:
       run: |
         date=$(date --iso-8601=seconds)
 
-        echo "::set-env name=date::$date"
+        echo "date=$date" >> $GITHUB_ENV
     - name: Config
       uses: unity-game-framework-actions/file-access@master
       id: config
@@ -89,7 +89,7 @@ jobs:
         git add package.json
         git add changelog.md
         git add readme.md
-        git commit -m "Setup Release ${{ env.version }}"
+        git commit -m "Setup release ${{ env.version }}"
         git push
     - name: Create
       uses: actions/create-release@v1
