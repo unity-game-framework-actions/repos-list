@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/unity-game-framework-actions/repos-list#readme",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
     "@types/js-yaml": "^3.12.5",
     "@types/object-path": "^0.11.0",
