@@ -54,7 +54,7 @@ repositoryLabel: '`{repositoryLabel}`'
 #   context: Context object passed into action as 'context' parameter.
 #   repository: Repository object.
 #   release: Repository latest release object.
-repositoryRelease: '`{release.name}`' 
+repositoryRelease: '`{release.name}` '
 
 # Setting to group repositories before formatting.
 # Description of group settings.
