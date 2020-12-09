@@ -190,8 +190,8 @@ function hasAnyTopic(repo: any, topics: any[]): boolean {
 }
 
 async function getLatestRelease(repo: any): Promise<any> {
-  var result = null
-  var releases = await utility.getReleases(repo.owner.login, repo.name)
+  let result = null
+  const releases = await utility.getReleases(repo.owner.login, repo.name)
 
   if (releases.length > 0) {
     releases.sort((a, b) => b.published_at.localeCompare(a.published_at))

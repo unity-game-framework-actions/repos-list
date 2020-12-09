@@ -199,8 +199,8 @@ function hasAnyTopic(repo, topics) {
 }
 function getLatestRelease(repo) {
     return __awaiter(this, void 0, void 0, function* () {
-        var result = null;
-        var releases = yield utility.getReleases(repo.owner.login, repo.name);
+        let result = null;
+        const releases = yield utility.getReleases(repo.owner.login, repo.name);
         if (releases.length > 0) {
             releases.sort((a, b) => b.published_at.localeCompare(a.published_at));
             result = releases[0];
