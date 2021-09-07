@@ -29,7 +29,7 @@
     "eol": "^0.9.1",
     "indent-string": "^4.0.0",
     "js-yaml": "^3.14.0",
-    "object-path": "^0.11.5"
+    "object-path": "^0.11.6"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.25.1",
