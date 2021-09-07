@@ -4,7 +4,7 @@ Repositories List
 
 ## Info
 
-- **Version**: `0.3.0`
+- **Version**: `0.3.1`
 
 ### Dependencies
 
@@ -15,7 +15,7 @@ Repositories List
 - `eol`: `^0.9.1`
 - `indent-string`: `^4.0.0`
 - `js-yaml`: `^3.14.0`
-- `object-path`: `^0.11.5`
+- `object-path`: `^0.11.6`
 
 
 ### Description
