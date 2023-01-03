@@ -28,7 +28,7 @@ outputs:
   result:
     description: 'Action result.'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
 branding:
   icon: 'box'  
