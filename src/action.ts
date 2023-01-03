@@ -194,7 +194,7 @@ async function getLatestRelease(repo: any): Promise<any> {
   var releases = await utility.getReleases(repo.owner.login, repo.name)
 
   if (releases.length > 0) {
-    var releasesPublished = [];
+    var releasesPublished = []
 
     for (const release of releases) {
       if (!release.draft) {
