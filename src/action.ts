@@ -194,9 +194,17 @@ async function getLatestRelease(repo: any): Promise<any> {
   var releases = await utility.getReleases(repo.owner.login, repo.name)
 
   if (releases.length > 0) {
-    releases.sort((a, b) => b.published_at.localeCompare(a.published_at))
+    var releasesPublished = [];
 
-    result = releases[0]
+    for (const release of releases) {
+      if (!release.draft) {
+        releasesPublished.push(release)
+      }
+    }
+
+    releasesPublished.sort((a, b) => b.published_at.localeCompare(a.published_at))
+
+    result = releasesPublished[0]
   }
 
   return result
