@@ -6,7 +6,7 @@ on:
     inputs:
       base:
         description: 'Base branch'
-        default: develop
+        default: main
         required: true
       head:
         description: 'Head branch'
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Create
-      uses: unity-game-framework-actions/issue-pull-request@master
+      uses: unity-game-framework-actions/issue-pull-request@main
       with:
         token: ${{ secrets.userToken }}
         issue: ${{ env.issue }}

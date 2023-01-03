@@ -6,7 +6,7 @@ on:
     inputs:
       base:
         description: 'Base branch'
-        default: develop
+        default: main
         required: true
       issue:
         description: 'Issue number'
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Create
-      uses: unity-game-framework-actions/issue-branch@master
+      uses: unity-game-framework-actions/issue-branch@main
       with:
         token: ${{ secrets.userToken }}
         base: ${{ env.base }}
